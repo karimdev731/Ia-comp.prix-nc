@@ -14,7 +14,7 @@ export const OcrService = {
     try {
       console.log("🔹 Initialisation du worker OCR...");
       const worker = await createWorker({
-        langPath: "/tessdata", // Chemin vers les fichiers de langue Tesseract
+        langPath: "public/tessdata", // Chemin vers les fichiers de langue Tesseract
         // logger: (m) => console.log("OCR Progress:", m),  // ❌ Désactiver pour tester
       });
 

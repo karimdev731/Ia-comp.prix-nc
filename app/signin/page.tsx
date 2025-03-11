@@ -17,7 +17,7 @@ import {
 import { useRouter } from "next/navigation";
 
 export default function SignIn() {
-  return <SignInContent />; 
+  return <SignInContent />;
 }
 
 function SignInContent() {
@@ -34,7 +34,7 @@ function SignInContent() {
   const onSubmit = async (data) => {
     setIsLoading(true);
     setError("");
-    
+
     try {
       // Authentification avec credentials (email/password)
       const result = await signIn("credentials", {
@@ -42,11 +42,11 @@ function SignInContent() {
         email: data.email,
         password: data.password,
       });
-      
+
       if (result?.error) {
         throw new Error(result.error);
       }
-      
+
       /* Redirection */
       router.push("/Dashboard");
     } catch (err) {
@@ -63,16 +63,16 @@ function SignInContent() {
     return null;
   }
 
-  {/* Affichage au chargement de la page */}
-  if (status === "loading") return <p>Chargement...</p>; 
+  {
+    /* Affichage au chargement de la page */
+  }
+  if (status === "loading") return <p>Chargement...</p>;
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-black/[0.96] antialiased bg-grid-white/[0.02]">
       <Card className="w-full max-w-md bg-gray-900">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold">
-            Se connecter
-          </CardTitle>
+          <CardTitle className="text-2xl font-bold">Se connecter</CardTitle>
           <CardDescription>
             Connectez-vous à votre compte pour continuer
           </CardDescription>
@@ -124,7 +124,7 @@ function SignInContent() {
             </div>
             <Button
               type="submit"
-              className="w-full bg-blue-200 hover:bg-blue-300"
+              className="w-full bg-blue-200 hover:bg-blue-300 font-bold"
               disabled={isLoading}
             >
               {isLoading ? "Connexion en cours ..." : "Se connecter"}
@@ -133,7 +133,7 @@ function SignInContent() {
         </CardContent>
         <CardFooter className="flex flex-col items-center space-y-4">
           <Button
-            className="w-full bg-white hover:text-red-500 hover:bg-blue-100"
+            className="w-full bg-white flex items-center justify-start pl-3 gap-1 hover:text-red-500 hover:bg-blue-100 font-bold"
             onClick={async () => {
               setIsLoading(true);
               try {
@@ -150,8 +150,12 @@ function SignInContent() {
             }}
             disabled={isLoading}
           >
-            Se connecter avec Google
+            <img src="/logogoogle2.png" className="w-6 h-6" />
+            <span className="flex-1 text-center ">
+              Se connecter avec Google
+            </span>
           </Button>
+
           <p className="text-sm text-gray-600">
             Je n'ai pas de compte ?{" "}
             <a href="/signup" className="text-blue-600 hover:underline">

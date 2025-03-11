@@ -120,7 +120,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <h1 className="text-sm font-medium">Conversation</h1>
             <div className="flex items-center gap-2">
               <Button variant="ghost" size="sm">
-                Télécharger toute la conversation
+                Sauvegarder la conversation
               </Button>
             </div>
           </header>
